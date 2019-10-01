@@ -32,7 +32,7 @@ mkdir -p /mnt/ext_storage/rootfs/home/test/nix-benchmark
 cd /mnt/ext_storage/rootfs
 cp -rf /home/nixadmin/nix-benchmark/centos/* /mnt/ext_storage/rootfs/home/test/nix-benchmark 
 
-exec chroot /mnt/ext_storage/rootf /bin/bash << EOF1
+exec chroot /mnt/ext_storage/rootfs /bin/bash << EOF1
 cd /home/test/nix-benchmark
 ./run-cis.sh
 exit

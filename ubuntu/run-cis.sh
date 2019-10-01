@@ -5,12 +5,12 @@ path="/home/nixadmin/nix-benchmark"
 mount_path="/mnt/ext_storage/rootfs"
 
 
-if [ -e "$mount_path" ]
-then
-echo "$mount_path exist"
-else
-echo "destination folder does not exist. Creating ....."  && $(mkdir -p $(echo "$mount_path"))
-fi
+#if [ -e "$mount_path" ]
+#then
+#echo "$mount_path exist"
+#else
+#echo "destination folder does not exist. Creating ....."  && $(mkdir -p $(echo "$mount_path"))
+#fi
 
 
 

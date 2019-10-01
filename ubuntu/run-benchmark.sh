@@ -4,34 +4,31 @@ path="/home/nixadmin/nix-benchmark"
 mount_path="/mnt/ext_storage/rootfs"
 username_path="/mnt/ext_storage/rootfs/home/test"
 
-if [ -e "$username_path" ]
-then
-echo "$username_path exist"
-else
-echo "destination folder does not exist. Creating ....."  && $(mkdir -p $(echo "$username_path"))
-fi
+#if [ -e "$username_path" ]
+#then
+#echo "$username_path exist"
+#else
+#echo "destination folder does not exist. Creating ....."  && $(mkdir -p $(echo "$username_path"))
+#fi
 
 test_home="/mnt/ext_storage/rootfs/home/test"
 test_dir="/mnt/ext_storage/rootfs/home/test/nix-benchmark"
 test_path="/home/test"
 l_test_dir="/home/test/nix-benchmark"
-if [ -e "$mount_path" ]
-then
-echo "$mount_path exist"
-else
-echo "destination folder does not exist. Creating ....."  && $(mkdir -p $(echo "$mount_path"))
-fi
+#if [ -e "$mount_path" ]
+#then
+#echo "$mount_path exist"
+#else
+#echo "destination folder does not exist. Creating ....."  && $(mkdir -p $(echo "$mount_path"))
+#fi
 
 
-
-
-cd $mount_path
 test_home="$mount_path/home/test"
-mkdir $test_home
-cp -r $path $test_home
-chmod +x $test_dir/run-cis-ubuntu.sh
-exec chroot $mount_path /bin/bash << EOF1
-cd $l_test_dir
-./run-cis-ubuntu.sh
+mkdir -p /mnt/ext_storage/rootfs/home/nixadmin/nix-benchmark
+cd /mnt/ext_storage/rootfs
+cp -r /home/nixadmin/nix-benchmark/ubuntu/* /mnt/ext_storage/rootfs/home/nixadmin/nix-benchmark
+exec chroot /mnt/ext_storage/rootfs /bin/bash << EOF1
+cd /home/nixadmin/nix-benchmark
+./run-cis.sh
 exit
 EOF1
